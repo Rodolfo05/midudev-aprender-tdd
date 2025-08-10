@@ -15,9 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
-      - name: 'Hola Mundo'
-        run: echo "Hola Mundo!"
-      - name: Dime la fecha
-        run: date
-      - name: Muestra el contenido del directorio
-        run: ls -la
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+      - run: npm ci --legacy-peer-deps
+      - run: npm run build
